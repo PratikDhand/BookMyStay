@@ -1,52 +1,42 @@
 /**
  * =============================================================
- * MAIN CLASS - UseCase1HotelBookingApp
+ * ABSTRACT CLASS - Room
  * =============================================================
  *
- * Use Case 1: Application Entry & Welcome Message
+ * Use Case 2: Basic Room Types & Static Availability
  *
  * Description:
- * This class represents the entry point of the
- * Hotel Booking Management System.
+ * This abstract class represents a generic hotel room.
+ * It defines common attributes shared by all room types.
  *
- * At this stage, the application:
- * - Starts execution from the main() method
- * - Displays a welcome message to the user
- * - Confirms that the system has started successfully
+ * Inventory-related concerns are intentionally excluded.
  *
- * No business logic, data structures, or user input
- * is implemented in this use case.
- *
- * The goal is to establish a clear and predictable
- * application startup point.
- *
- * @author Developer
- * @version 1.0
+ * @version 2.1
  */
-public class uc1 {
+public abstract class Room {
+
+    /** Number of beds available in the room */
+    protected int numberOfBeds;
+
+    /** Total size of the room in square feet */
+    protected int squareFeet;
+
+    /** Price charged per night */
+    protected double pricePerNight;
 
     /**
-     * Application entry point.
-     * <p>
-     * This method is the first method executed
-     * when the program is launched by the JVM.
-     *
-     * @param args Command-line arguments
+     * Constructor used by child classes
      */
-    public static void main(String[] args) {
+    public Room(int numberOfBeds, int squareFeet, double pricePerNight) {
+        this.numberOfBeds = numberOfBeds;
+        this.squareFeet = squareFeet;
+        this.pricePerNight = pricePerNight;
+    }
 
-        // Application Name and Version
-        String appName = "Hotel Booking Management System";
-        String version = "v1.0";
-
-        // Welcome Message
-        System.out.println("=================================================");
-        System.out.println("        WELCOME TO " + appName.toUpperCase());
-        System.out.println("=================================================");
-        System.out.println("Version: " + version);
-        System.out.println();
-        System.out.println("System started successfully.");
-        System.out.println("Thank you for using the application.");
-        System.out.println("=================================================");
+    /** Displays room details */
+    public void displayRoomDetails() {
+        System.out.println("Beds: " + numberOfBeds);
+        System.out.println("Size: " + squareFeet + " sq ft");
+        System.out.println("Price per night: $" + pricePerNight);
     }
 }
